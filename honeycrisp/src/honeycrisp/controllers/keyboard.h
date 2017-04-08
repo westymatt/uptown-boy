@@ -9,17 +9,19 @@ using std::map;
 NS_HC_BEGIN
 
 namespace Keyboard {
-  const Uint8 *currentState = nullptr;
+  using KeyboardState = const Uint8 *;
 
-  const Uint8* getState() {
+  extern KeyboardState currentState;
+
+  extern KeyboardState getState() {
     return SDL_GetKeyboardState(NULL);
   }
 
-  void update() {
+  extern void update() {
     currentState = getState();
   }
 
-  bool isPressed(int keycode) {
+  extern bool isPressed(int keycode) {
     if (currentState != nullptr && currentState != NULL) {
       return static_cast<bool>(currentState[keycode]);
     }
