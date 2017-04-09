@@ -25,7 +25,6 @@ public:
   }
 
   virtual void update() override {
-    Scene::update();
     // if (Keyboard::isPressed(SDL_SCANCODE_LEFT)) {
     //   this->kenSheet->sprite->dstRect_.decX(1);
     // }

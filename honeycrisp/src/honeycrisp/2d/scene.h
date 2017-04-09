@@ -17,7 +17,7 @@ public:
   virtual bool init();
   virtual void execute();
   virtual void render();
-  virtual void update();
+  virtual void update()=0;
   virtual void setRenderer(RendererSPtr renderer);
   virtual ~Scene(){};
 
