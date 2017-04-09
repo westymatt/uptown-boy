@@ -1,6 +1,6 @@
 #pragma once
-#include <SDL2/SDL.h>
 #include "../base/macros.h"
+#include <SDL2/SDL.h>
 
 NS_HC_BEGIN
 
@@ -12,6 +12,6 @@ public:
   virtual void update() = 0;
 };
 
-}
+} // namespace Controllers
 
 NS_HC_END

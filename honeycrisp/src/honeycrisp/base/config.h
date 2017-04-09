@@ -1,8 +1,8 @@
 #pragma once
 
-#include <memory>
-#include "../utils/logging.h"
 #include "../base/macros.h"
+#include "../utils/logging.h"
+#include <memory>
 
 using std::unique_ptr;
 using std::shared_ptr;

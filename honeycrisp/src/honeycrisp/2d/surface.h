@@ -1,12 +1,12 @@
 #pragma once
 
+#include "../base/gameobject.h"
+#include "../base/macros.h"
+#include "../utils/logging.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <memory>
 #include <string>
-#include "../base/gameobject.h"
-#include "../utils/logging.h"
-#include "../base/macros.h"
 
 NS_HC_BEGIN
 

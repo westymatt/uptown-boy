@@ -57,7 +57,7 @@ int main(int argc, char *args[]) {
   config.width = 800;
   config.height = 600;
   config.flags = 0;
-  
+
   hcGame game(config);
   if (game.init()) {
     auto scene = make_unique<ExampleScene1>();

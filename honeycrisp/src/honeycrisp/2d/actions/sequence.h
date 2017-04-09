@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-#include <utility>
 #include "../../base/macros.h"
 #include "action.h"
+#include <memory>
+#include <utility>
+#include <vector>
 
 using std::unique_ptr;
 using std::make_unique;

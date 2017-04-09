@@ -1,22 +1,22 @@
 #pragma once
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL2_framerate.h>
-#include <SDL2/SDL2_gfxPrimitives.h>
-#include <iostream>
-#include <memory>
-#include <map>
-#include <string>
-#include <vector>
-#include "game_context.h"
-#include "../controllers/keyboard.h"
-#include "../utils/logging.h"
-#include "../2d/sprite.h"
 #include "../2d/scene.h"
+#include "../2d/sprite.h"
 #include "../base/config.h"
 #include "../base/macros.h"
 #include "../base/sdl.h"
+#include "../controllers/keyboard.h"
+#include "../utils/logging.h"
+#include "game_context.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL2_framerate.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_image.h>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 
 NS_HC_BEGIN
 
@@ -28,7 +28,7 @@ using std::vector;
 class hcGame {
 public:
   hcGame(GameConfig config) : config_(config), window_(nullptr){};
-  ~hcGame(){
+  ~hcGame() {
     IMG_Quit();
     SDL_Quit();
   };
@@ -59,8 +59,8 @@ private:
   /*
    * Input Devices
    */
-  vector<SDL_Joystick*> gamepads_;
-  Controllers::Keyboard* keyboard_;
+  vector<SDL_Joystick *> gamepads_;
+  Controllers::Keyboard *keyboard_;
 
   Base::hcGameContext gameContext;
 

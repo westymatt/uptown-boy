@@ -10,9 +10,7 @@ void Scene::addChild(Node *node) {
   this->nodes_.push_back(node);
 }
 
-bool Scene::init() {
-  return true;
-}
+bool Scene::init() { return true; }
 
 void Scene::execute() {}
 

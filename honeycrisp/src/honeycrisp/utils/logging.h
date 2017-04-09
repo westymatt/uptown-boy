@@ -1,8 +1,8 @@
 #pragma once
 
+#include "../base/macros.h"
 #include <SDL2/SDL.h>
 #include <string>
-#include "../base/macros.h"
 
 NS_HC_BEGIN
 

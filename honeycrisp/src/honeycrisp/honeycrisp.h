@@ -9,7 +9,6 @@
 #include "base/sdl.h"
 #include "base/singleton.h"
 #include "base/thread.h"
-#include "base/thread.h"
 #include "base/timer.h"
 
 // Renderer
@@ -39,8 +38,8 @@
 
 // Controllers
 #include "controllers/controller.h"
-#include "controllers/keyboard.h"
 #include "controllers/gamepad.h"
+#include "controllers/keyboard.h"
 
 // Entity System
 #include "entities/entity.h"

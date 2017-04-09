@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
-#include <utility>
 #include "../base/macros.h"
 #include "sprite.h"
+#include <memory>
+#include <utility>
 
 using std::unique_ptr;
 using std::move;

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <memory>
 #include "../base/macros.h"
+#include <memory>
 
 using std::unique_ptr;
 

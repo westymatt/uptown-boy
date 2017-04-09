@@ -1,10 +1,10 @@
 #pragma once
 
-#include <SDL2/SDL.h>
-#include <utility>
-#include <memory>
 #include "../../base/macros.h"
 #include "../point.h"
+#include <SDL2/SDL.h>
+#include <memory>
+#include <utility>
 
 using std::make_unique;
 

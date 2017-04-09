@@ -1,9 +1,9 @@
 #pragma once
 
-#include "SDL2/SDL.h"
-#include <vector>
-#include "node.h"
 #include "../base/sdl.h"
+#include "SDL2/SDL.h"
+#include "node.h"
+#include <vector>
 
 using std::vector;
 using std::unique_ptr;

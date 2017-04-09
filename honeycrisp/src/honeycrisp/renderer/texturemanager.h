@@ -1,11 +1,11 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <map>
-#include <cstddef>
-#include <SDL2/SDL.h>
 #include "../base/macros.h"
+#include <SDL2/SDL.h>
+#include <cstddef>
+#include <iostream>
+#include <map>
+#include <string>
 
 NS_HC_BEGIN
 

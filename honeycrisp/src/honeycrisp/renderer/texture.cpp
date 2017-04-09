@@ -1,6 +1,6 @@
 #include "texture.h"
-#include <SDL2/SDL_image.h>
 #include "../utils/logging.h"
+#include <SDL2/SDL_image.h>
 
 USING_NS_HC;
 

@@ -2,6 +2,4 @@
 
 USING_NS_HC;
 
-void Camera::Camera() {
-  
-}
+void Camera::Camera() {}

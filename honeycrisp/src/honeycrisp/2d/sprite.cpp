@@ -20,6 +20,4 @@ void Sprite::setPosition(Point &&pt) { this->dstRect_.point = pt; }
 
 void Sprite::setScale(float x, float y) {}
 
-void Sprite::setScale(Vector2f factors) {
-  this->texture->setScale(factors);
-}
+void Sprite::setScale(Vector2f factors) { this->texture->setScale(factors); }

@@ -1,11 +1,11 @@
 #pragma once
 
+#include "../utils/logging.h"
+#include "macros.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <memory>
 #include <string>
-#include "macros.h"
-#include "../utils/logging.h"
 
 using std::unique_ptr;
 using std::shared_ptr;

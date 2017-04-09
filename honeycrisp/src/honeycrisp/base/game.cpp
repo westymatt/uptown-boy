@@ -1,5 +1,5 @@
-#include "../controllers/keyboard.h"
 #include "game.h"
+#include "../controllers/keyboard.h"
 
 USING_NS_HC;
 
@@ -16,27 +16,27 @@ bool hcGame::init() {
     LOG(SDL_GetError());
     return false;
   }
-  this->window_ = make_unique_window(
-      this->config_.title, this->config_.xpos, this->config_.ypos,
-      this->config_.width, this->config_.height, this->config_.flags);
+  this->window_ = make_unique_window(this->config_.title, this->config_.xpos,
+                                     this->config_.ypos, this->config_.width,
+                                     this->config_.height, this->config_.flags);
   if (this->window_ == nullptr) {
     LOG(SDL_GetError());
     SDL_Quit();
     return false;
   }
-  
+
   auto numGamepads = SDL_NumJoysticks();
   if (numGamepads > 0) {
     for (int i = 0; i < numGamepads; i++) {
-       auto joyStick = SDL_JoystickOpen(i);
-       if (joyStick == NULL) {
-         LOG("FAILURE TO LOAD GAMEPAG");
-         return false;
-       }
-       this->gamepads_.push_back(joyStick);
+      auto joyStick = SDL_JoystickOpen(i);
+      if (joyStick == NULL) {
+        LOG("FAILURE TO LOAD GAMEPAG");
+        return false;
+      }
+      this->gamepads_.push_back(joyStick);
     }
   }
-  
+
   this->keyboard_ = new Controllers::Keyboard();
 
   this->renderer_ = make_shared_renderer(
@@ -57,9 +57,7 @@ bool hcGame::init() {
   return true;
 }
 
-void hcGame::update() {
-  this->scene_->update();
-}
+void hcGame::update() { this->scene_->update(); }
 
 void hcGame::render() {
   SDL_RenderClear(&*this->renderer_);
