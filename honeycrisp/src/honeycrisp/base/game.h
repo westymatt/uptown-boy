@@ -57,7 +57,7 @@ private:
   /*
    * Input Devices
    */
-  vector<JoystickUPtr> gamepads_;
+  vector<SDL_Joystick*> gamepads_;
   
   void executeScene();
   void loop();

@@ -12,6 +12,10 @@ bool Game::init() {
     LOG(SDL_GetError());
     return false;
   }
+  if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
+    LOG(SDL_GetError());
+    return false;
+  }
   this->window_ = make_unique_window(
       this->config_.title, this->config_.xpos, this->config_.ypos,
       this->config_.width, this->config_.height, this->config_.flags);
@@ -20,7 +24,18 @@ bool Game::init() {
     SDL_Quit();
     return false;
   }
-
+  
+  auto numGamepads = SDL_NumJoysticks();
+  if (numGamepads > 0) {
+    for (int i = 0; i < numGamepads; i++) {
+       auto joyStick = SDL_JoystickOpen(i);
+       if (joyStick == NULL) {
+         LOG("FAILURE TO LOAD GAMEPAG");
+         return false;
+       }
+       this->gamepads_.push_back(joyStick);
+    }
+  }
   this->renderer_ = make_shared_renderer(
       this->window_, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
