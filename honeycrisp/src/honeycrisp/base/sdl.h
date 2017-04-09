@@ -47,6 +47,12 @@ struct sdl_deleter {
       SDL_FreeSurface(p);
     }
   }
+  void operator()(SDL_Joystick *p) const {
+    if (p) {
+      SDL_JoystickClose(p);
+      p = nullptr;
+    }
+  }
 };
 
 /*
@@ -56,12 +62,13 @@ using WindowUPtr = sdl_u_ptr<SDL_Window, sdl_deleter>;
 using RendererUPtr = sdl_u_ptr<SDL_Renderer, sdl_deleter>;
 using TextureUPtr = sdl_u_ptr<SDL_Texture, sdl_deleter>;
 using SurfaceUPtr = sdl_u_ptr<SDL_Surface, sdl_deleter>;
+using JoystickUPtr = sdl_u_ptr<SDL_Joystick, sdl_deleter>;
 
 using WindowSPtr = sdl_s_ptr<SDL_Window, sdl_deleter>;
 using RendererSPtr = sdl_s_ptr<SDL_Renderer, sdl_deleter>;
 using TextureSPtr = sdl_s_ptr<SDL_Texture, sdl_deleter>;
 using SurfaceSPtr = sdl_s_ptr<SDL_Surface, sdl_deleter>;
-
+using JoystickSPtr = sdl_s_ptr<SDL_Joystick, sdl_deleter>;
 /*
  * Unique Ptr Factories
  */

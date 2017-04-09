@@ -40,6 +40,7 @@
 // Controllers
 #include "controllers/controller.h"
 #include "controllers/keyboard.h"
+#include "controllers/gamepad.h"
 
 // Entity System
 #include "entities/entity.h"

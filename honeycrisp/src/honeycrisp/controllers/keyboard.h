@@ -11,17 +11,17 @@ NS_HC_BEGIN
 namespace Keyboard {
   using KeyboardState = const Uint8 *;
 
-  extern KeyboardState currentState;
+  KeyboardState currentState;
 
-  extern KeyboardState getState() {
+  KeyboardState getState() {
     return SDL_GetKeyboardState(NULL);
   }
 
-  extern void update() {
+  void update() {
     currentState = getState();
   }
 
-  extern bool isPressed(int keycode) {
+  bool isPressed(int keycode) {
     if (currentState != nullptr && currentState != NULL) {
       return static_cast<bool>(currentState[keycode]);
     }

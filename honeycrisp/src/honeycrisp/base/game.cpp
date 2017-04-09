@@ -1,3 +1,4 @@
+#include "../controllers/keyboard.h"
 #include "game.h"
 
 USING_NS_HC;

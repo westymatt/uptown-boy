@@ -8,10 +8,10 @@
 #include <memory>
 #include <map>
 #include <string>
+#include <vector>
 #include "../utils/logging.h"
 #include "../2d/sprite.h"
 #include "../2d/scene.h"
-#include "../controllers/keyboard.h"
 #include "../base/config.h"
 #include "../base/macros.h"
 #include "../base/sdl.h"
@@ -21,6 +21,7 @@ NS_HC_BEGIN
 using std::unique_ptr;
 using std::map;
 using std::string;
+using std::vector;
 
 class Game {
 public:
@@ -53,6 +54,11 @@ private:
   WindowUPtr window_;
   RendererSPtr renderer_;
 
+  /*
+   * Input Devices
+   */
+  vector<JoystickUPtr> gamepads_;
+  
   void executeScene();
   void loop();
   void processScene();
