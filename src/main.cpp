@@ -24,8 +24,8 @@ public:
     return true;
   }
 
-  virtual void enterFrame() override {
-    Scene::enterFrame();
+  virtual void update() override {
+    Scene::update();
     // if (Keyboard::isPressed(SDL_SCANCODE_LEFT)) {
     //   this->kenSheet->sprite->dstRect_.decX(1);
     // }
@@ -43,8 +43,6 @@ public:
     //   auto moveby = new MoveBy(1);
     // }
   }
-
-  virtual void exitFrame() override { Scene::exitFrame(); }
 
 private:
   SpritesheetUPtr kenSheet;

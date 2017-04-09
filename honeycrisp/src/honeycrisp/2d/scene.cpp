@@ -15,15 +15,14 @@ bool Scene::init() {
 }
 
 void Scene::execute() {}
+
 void Scene::setRenderer(RendererSPtr renderer) { this->renderer = renderer; }
 
-void Scene::enterFrame() {
-  for (Node *node : this->nodes_) {
-    node->render();
-  }
+void Scene::update() {
+  /*for (Node *node : this->nodes_) {
+    node->update();
+  }*/
 }
-
-void Scene::exitFrame() {}
 
 void Scene::render() {
   for (Node *node : this->nodes_) {

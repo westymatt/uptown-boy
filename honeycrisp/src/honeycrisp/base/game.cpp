@@ -57,6 +57,10 @@ bool hcGame::init() {
   return true;
 }
 
+void hcGame::update() {
+  this->scene_->update();
+}
+
 void hcGame::render() {
   SDL_RenderClear(&*this->renderer_);
   this->processScene();
@@ -95,10 +99,8 @@ void hcGame::processScene() { this->scene_->render(); }
 void hcGame::loop() {
   while (this->running()) {
     this->handleEvents();
-    this->scene_->enterFrame();
     this->update();
     this->render();
-    this->scene_->exitFrame();
     SDL_framerateDelay(&this->fpsManager_);
   }
 }
