@@ -10,8 +10,6 @@ void Scene::addChild(Node *node) {
   this->nodes_.push_back(node);
 }
 
-bool Scene::init() { return true; }
-
 void Scene::execute() {}
 
 void Scene::setRenderer(RendererSPtr renderer) { this->renderer = renderer; }

@@ -12,7 +12,6 @@ USING_NS_HC;
 class ExampleScene1 : public Scene {
 public:
   virtual bool init() override {
-    Scene::init();
     auto sprite = make_unique<Sprite>(Rect{0, 0, 80, 80}, Rect{0, 0, 100, 100});
     this->kenSheet = make_unique<Spritesheet>(move(sprite));
     // Vector2f scale = Vector2f(2.0, 2.0);

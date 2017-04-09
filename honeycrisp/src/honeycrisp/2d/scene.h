@@ -14,7 +14,7 @@ NS_HC_BEGIN
 class Scene {
 public:
   virtual void addChild(Node *node);
-  virtual bool init();
+  virtual bool init()=0;
   virtual void execute();
   virtual void render();
   virtual void update()=0;
