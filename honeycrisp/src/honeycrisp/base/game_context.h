@@ -15,6 +15,7 @@ struct hcGameContext_t {
   vector<Controllers::Gamepad *> gamepads;
   Controllers::Keyboard *keyboard;
   RendererSPtr renderer;  
+  WindowUPtr window;
 };
 
 using hcGameContext = hcGameContext_t;
