@@ -9,7 +9,7 @@ using std::shared_ptr;
 
 NS_HC_BEGIN
 
-struct GameConfig {
+struct hcGameConfig {
   const char *title;
   int fps;
   int xpos;
@@ -19,7 +19,7 @@ struct GameConfig {
   int flags;
 };
 
-using GameConfigUPtr = unique_ptr<GameConfig>;
-using GameConfigSPtr = shared_ptr<GameConfig>;
+using hcGameConfigUPtr = unique_ptr<hcGameConfig>;
+using hcGameConfigSPtr = shared_ptr<hcGameConfig>;
 
 NS_HC_END

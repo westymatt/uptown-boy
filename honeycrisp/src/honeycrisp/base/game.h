@@ -2,7 +2,7 @@
 
 #include "../2d/scene.h"
 #include "../2d/sprite.h"
-#include "../base/config.h"
+#include "../base/game_config.h"
 #include "../base/macros.h"
 #include "../base/sdl.h"
 #include "../controllers/keyboard.h"
@@ -27,7 +27,7 @@ using std::vector;
 
 class hcGame {
 public:
-  hcGame(GameConfig config) : config_(config), window_(nullptr){};
+  hcGame(hcGameConfig config) : config_(config), window_(nullptr){};
   ~hcGame() {
     IMG_Quit();
     SDL_Quit();
@@ -48,7 +48,7 @@ public:
   bool running() { return this->running_; }
 
 private:
-  GameConfig config_;
+  hcGameConfig config_;
   FPSmanager fpsManager_;
   SceneUPtr scene_;
   bool running_;

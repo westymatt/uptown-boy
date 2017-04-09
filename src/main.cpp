@@ -49,7 +49,7 @@ private:
 };
 
 int main(int argc, char *args[]) {
-  GameConfig config;
+  hcGameConfig config;
   config.title = "Uptown Boy";
   config.fps = 60;
   config.xpos = 100;

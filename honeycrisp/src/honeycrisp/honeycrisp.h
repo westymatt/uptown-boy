@@ -2,7 +2,7 @@
 
 #define HONEYCRISP_VERSION = 0.1
 
-#include "base/config.h"
+#include "base/game_config.h"
 #include "base/game.h"
 #include "base/gameobject.h"
 #include "base/macros.h"
