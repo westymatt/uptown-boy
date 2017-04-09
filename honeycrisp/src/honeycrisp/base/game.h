@@ -9,6 +9,8 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "game_context.h"
+#include "../controllers/keyboard.h"
 #include "../utils/logging.h"
 #include "../2d/sprite.h"
 #include "../2d/scene.h"
@@ -23,10 +25,10 @@ using std::map;
 using std::string;
 using std::vector;
 
-class Game {
+class hcGame {
 public:
-  Game(GameConfig config) : config_(config), window_(nullptr){};
-  ~Game(){
+  hcGame(GameConfig config) : config_(config), window_(nullptr){};
+  ~hcGame(){
     IMG_Quit();
     SDL_Quit();
   };
@@ -58,7 +60,10 @@ private:
    * Input Devices
    */
   vector<SDL_Joystick*> gamepads_;
-  
+  Controllers::Keyboard* keyboard_;
+
+  Base::hcGameContext gameContext;
+
   void executeScene();
   void loop();
   void processScene();

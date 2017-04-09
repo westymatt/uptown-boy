@@ -26,22 +26,22 @@ public:
 
   virtual void enterFrame() override {
     Scene::enterFrame();
-    if (Keyboard::isPressed(SDL_SCANCODE_LEFT)) {
-      this->kenSheet->sprite->dstRect_.decX(1);
-    }
-    if (Keyboard::isPressed(SDL_SCANCODE_RIGHT)) {
-      this->kenSheet->sprite->dstRect_.incX(1);
-      this->kenSheet->sprite->setPosition(Point{100, 100});
-    }
-    if (Keyboard::isPressed(SDL_SCANCODE_UP)) {
-      this->kenSheet->sprite->dstRect_.decY(1);
-    }
-    if (Keyboard::isPressed(SDL_SCANCODE_DOWN)) {
-      this->kenSheet->sprite->dstRect_.incY(1);
-    }
-    if (Keyboard::isPressed((SDL_SCANCODE_SPACE))) {
-      auto moveby = new MoveBy(1);
-    }
+    // if (Keyboard::isPressed(SDL_SCANCODE_LEFT)) {
+    //   this->kenSheet->sprite->dstRect_.decX(1);
+    // }
+    // if (Keyboard::isPressed(SDL_SCANCODE_RIGHT)) {
+    //   this->kenSheet->sprite->dstRect_.incX(1);
+    //   this->kenSheet->sprite->setPosition(Point{100, 100});
+    // }
+    // if (Keyboard::isPressed(SDL_SCANCODE_UP)) {
+    //   this->kenSheet->sprite->dstRect_.decY(1);
+    // }
+    // if (Keyboard::isPressed(SDL_SCANCODE_DOWN)) {
+    //   this->kenSheet->sprite->dstRect_.incY(1);
+    // }
+    // if (Keyboard::isPressed((SDL_SCANCODE_SPACE))) {
+    //   auto moveby = new MoveBy(1);
+    // }
   }
 
   virtual void exitFrame() override { Scene::exitFrame(); }
@@ -60,7 +60,7 @@ int main(int argc, char *args[]) {
   config.height = 600;
   config.flags = 0;
   
-  Game game(config);
+  hcGame game(config);
   if (game.init()) {
     auto scene = make_unique<ExampleScene1>();
     game.runScene(move(scene));

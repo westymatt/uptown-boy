@@ -3,7 +3,7 @@
 
 USING_NS_HC;
 
-bool Game::init() {
+bool hcGame::init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
     LOG(SDL_GetError());
     return false;
@@ -36,6 +36,9 @@ bool Game::init() {
        this->gamepads_.push_back(joyStick);
     }
   }
+  
+  this->keyboard_ = new Controllers::Keyboard();
+
   this->renderer_ = make_shared_renderer(
       this->window_, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -54,13 +57,13 @@ bool Game::init() {
   return true;
 }
 
-void Game::render() {
+void hcGame::render() {
   SDL_RenderClear(&*this->renderer_);
   this->processScene();
   SDL_RenderPresent(&*this->renderer_);
 }
 
-void Game::handleEvents() {
+void hcGame::handleEvents() {
   SDL_Event event;
   if (SDL_PollEvent(&event)) {
     switch (event.type) {
@@ -71,25 +74,25 @@ void Game::handleEvents() {
       break;
     }
   }
-  Keyboard::update();
+  this->keyboard_->update();
 }
 
-void Game::loadScene(SceneUPtr scene) { this->scene_ = move(scene); }
+void hcGame::loadScene(SceneUPtr scene) { this->scene_ = move(scene); }
 
-void Game::runScene(SceneUPtr scene) {
+void hcGame::runScene(SceneUPtr scene) {
   this->scene_ = move(scene);
   this->executeScene();
 }
 
-void Game::executeScene() {
+void hcGame::executeScene() {
   this->scene_->setRenderer(this->renderer_);
   this->scene_->init();
   this->loop();
 }
 
-void Game::processScene() { this->scene_->render(); }
+void hcGame::processScene() { this->scene_->render(); }
 
-void Game::loop() {
+void hcGame::loop() {
   while (this->running()) {
     this->handleEvents();
     this->scene_->enterFrame();
@@ -100,7 +103,7 @@ void Game::loop() {
   }
 }
 
-void Game::clean() {
+void hcGame::clean() {
   SDL_DestroyWindow(&*this->window_);
   SDL_DestroyRenderer(&*this->renderer_);
   SDL_Quit();
