@@ -92,6 +92,11 @@ inline auto make_sdl_u_ptr(SDL_Surface *surface)
   return sdl_u_ptr<SDL_Surface, sdl_deleter>(surface, sdl_deleter());
 }
 
+inline auto make_sdl_u_ptr(SDL_Joystick *joystick)
+    ->sdl_u_ptr<SDL_Joystick, sdl_deleter> {
+  return sdl_u_ptr<SDL_Joystick, sdl_deleter>(joystick, sdl_deleter());
+}
+
 /*
  * Shared Ptr Factories
  */
@@ -115,6 +120,11 @@ inline auto make_sdl_s_ptr(SDL_Surface *surface)
   return sdl_s_ptr<SDL_Surface, sdl_deleter>(surface, sdl_deleter());
 }
 
+inline auto make_sdl_s_ptr(SDL_Joystick *joystick)
+    -> sdl_s_ptr<SDL_Joystick, sdl_deleter> {
+  return sdl_s_ptr<SDL_Joystick, sdl_deleter>(joystick, sdl_deleter());
+}
+
 /*
  *  Unique Ptr Helpers
  */
@@ -135,6 +145,10 @@ inline auto make_unique_texture(RendererUPtr &renderer, string filepath) {
 inline auto make_unique_surface(string filepath,
                                 SDL_PixelFormat *screenFormat) {
   return make_sdl_u_ptr(IMG_Load(filepath.c_str()));
+}
+
+inline auto make_unique_joystick(const int index) {
+  return make_sdl_u_ptr(SDL_JoystickOpen(index));
 }
 
 /*
@@ -161,6 +175,10 @@ inline auto make_shared_texture(RendererSPtr &renderer, string filepath) {
 inline auto make_shared_surface(string filepath,
                                 SDL_PixelFormat *screenFormat) {
   return make_sdl_s_ptr(IMG_Load(filepath.c_str()));
+}
+
+inline auto make_shared_joystick(const int index) {
+  return make_sdl_s_ptr(SDL_JoystickOpen(index));
 }
 
 NS_HC_END
