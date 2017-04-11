@@ -16,10 +16,10 @@ bool hcGame::init() {
     LOG(SDL_GetError());
     return false;
   }
-  this->window_ = make_unique_window(this->config_.title, this->config_.xpos,
+  this->gameContext.window = make_unique_window(this->config_.title, this->config_.xpos,
                                      this->config_.ypos, this->config_.width,
                                      this->config_.height, this->config_.flags);
-  if (this->window_ == nullptr) {
+  if (this->gameContext.window == nullptr) {
     LOG(SDL_GetError());
     SDL_Quit();
     return false;
@@ -28,26 +28,26 @@ bool hcGame::init() {
   auto numGamepads = SDL_NumJoysticks();
   if (numGamepads > 0) {
     for (int i = 0; i < numGamepads; i++) {
-      auto joyStick = SDL_JoystickOpen(i);
-      if (joyStick == NULL) {
+      auto joystick = SDL_JoystickOpen(i);
+      if (joystick == NULL) {
         LOG("FAILURE TO LOAD GAMEPAG");
         return false;
       }
-      this->gamepads_.push_back(joyStick);
+      this->gameContext.gamepads.push_back(new Controllers::Gamepad(joystick));
     }
   }
 
-  this->keyboard_ = new Controllers::Keyboard();
+  this->gameContext.keyboard = new Controllers::Keyboard();
 
-  this->renderer_ = make_shared_renderer(
-      this->window_, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  this->gameContext.renderer = make_shared_renderer(
+      this->gameContext.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-  if (this->renderer_ == nullptr) {
+  if (this->gameContext.renderer == nullptr) {
     LOG(SDL_GetError());
     SDL_Quit();
     return false;
   }
-  SDL_SetRenderDrawColor(&*this->renderer_, 255, 255, 255, 255);
+  SDL_SetRenderDrawColor(&*this->gameContext.renderer, 255, 255, 255, 255);
 
   SDL_initFramerate(&this->fpsManager_);
   SDL_setFramerate(&this->fpsManager_, this->config_.fps);
@@ -60,9 +60,9 @@ bool hcGame::init() {
 void hcGame::update() { this->scene_->update(); }
 
 void hcGame::render() {
-  SDL_RenderClear(&*this->renderer_);
+  SDL_RenderClear(&*this->gameContext.renderer);
   this->processScene();
-  SDL_RenderPresent(&*this->renderer_);
+  SDL_RenderPresent(&*this->gameContext.renderer);
 }
 
 void hcGame::handleEvents() {
@@ -76,7 +76,7 @@ void hcGame::handleEvents() {
       break;
     }
   }
-  this->keyboard_->update();
+  this->gameContext.keyboard->update();
 }
 
 void hcGame::loadScene(SceneUPtr scene) { this->scene_ = move(scene); }
@@ -87,7 +87,7 @@ void hcGame::runScene(SceneUPtr scene) {
 }
 
 void hcGame::executeScene() {
-  this->scene_->setRenderer(this->renderer_);
+  this->scene_->setRenderer(this->gameContext.renderer);
   this->scene_->init();
   this->loop();
 }
@@ -105,6 +105,6 @@ void hcGame::loop() {
 
 void hcGame::clean() {
   SDL_DestroyWindow(&*this->window_);
-  SDL_DestroyRenderer(&*this->renderer_);
+  SDL_DestroyRenderer(&*this->gameContext.renderer);
   SDL_Quit();
 }
