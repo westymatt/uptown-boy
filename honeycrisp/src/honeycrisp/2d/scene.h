@@ -23,7 +23,7 @@ public:
   virtual ~Scene(){};
 
 protected:
-  Base::hcGameContext *gameContext;
+  Base::hcGameContext *gc;
   vector<Node *> nodes_;
 };
 
