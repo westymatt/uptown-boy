@@ -27,7 +27,7 @@ using std::vector;
 
 class hcGame {
 public:
-  hcGame(hcGameConfig config) : config_(config), window_(nullptr){};
+  hcGame(hcGameConfig config) : config_(config) {};
   ~hcGame() {
     IMG_Quit();
     SDL_Quit();
@@ -43,7 +43,7 @@ public:
   void loadScene(SceneUPtr scene);
   void runScene(SceneUPtr scene);
 
-  SDL_Renderer *getRenderer() { return &*this->renderer_; }
+  SDL_Renderer *getRenderer() { return &*this->gameContext.renderer; }
 
   bool running() { return this->running_; }
 
@@ -52,15 +52,6 @@ private:
   FPSmanager fpsManager_;
   SceneUPtr scene_;
   bool running_;
-
-  WindowUPtr window_;
-  RendererSPtr renderer_;
-
-  /*
-   * Input Devices
-   */
-  vector<SDL_Joystick *> gamepads_;
-  Controllers::Keyboard *keyboard_;
 
   Base::hcGameContext gameContext;
 

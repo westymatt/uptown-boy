@@ -104,7 +104,7 @@ void hcGame::loop() {
 }
 
 void hcGame::clean() {
-  SDL_DestroyWindow(&*this->window_);
+  SDL_DestroyWindow(&*this->gameContext.window);
   SDL_DestroyRenderer(&*this->gameContext.renderer);
   SDL_Quit();
 }
