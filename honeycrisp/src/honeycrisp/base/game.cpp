@@ -1,5 +1,6 @@
 #include "game.h"
 #include "../controllers/keyboard.h"
+#include <assert.h>
 
 USING_NS_HC;
 
@@ -49,10 +50,6 @@ bool hcGame::init() {
   }
   SDL_SetRenderDrawColor(&*this->gameContext.renderer, 255, 255, 255, 255);
 
-  SDL_initFramerate(&this->fpsManager_);
-  SDL_setFramerate(&this->fpsManager_, this->config_.fps);
-  SDL_framerateDelay(&this->fpsManager_);
-  log(SDL_getFramerate(&this->fpsManager_));
   this->running_ = true;
   return true;
 }
@@ -81,8 +78,7 @@ void hcGame::handleEvents() {
 
 void hcGame::loadScene(SceneUPtr scene) { this->scene_ = move(scene); }
 
-void hcGame::runScene(SceneUPtr scene) {
-  this->scene_ = move(scene);
+void hcGame::run() {
   this->executeScene();
 }
 
@@ -95,11 +91,24 @@ void hcGame::executeScene() {
 void hcGame::processScene() { this->scene_->render(); }
 
 void hcGame::loop() {
+  uint32_t countedFrames = 0;
+  this->fpsTimer.start();
+  const int ticksPerFrame = 1000 / this->config_.fps;
   while (this->running()) {
+    this->capTimer.start();
     this->handleEvents();
+
+    float avgFPS = countedFrames / (this->fpsTimer.getTicks() / 1000.f);
+    if (avgFPS > 200000) {
+      avgFPS = 0;
+    }
     this->update();
     this->render();
-    SDL_framerateDelay(&this->fpsManager_);
+    ++countedFrames;
+    int frameTicks = capTimer.getTicks();
+    if (frameTicks < ticksPerFrame) {
+      SDL_Delay(ticksPerFrame - frameTicks);
+    }
   }
 }
 

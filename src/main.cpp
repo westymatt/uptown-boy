@@ -59,7 +59,8 @@ int main(int argc, char *args[]) {
   hcGame game(config);
   if (game.init()) {
     auto scene = make_unique<ExampleScene1>();
-    game.runScene(move(scene));
+    game.loadScene(move(scene));
+    game.run();
     game.clean();
   }
   return 0;

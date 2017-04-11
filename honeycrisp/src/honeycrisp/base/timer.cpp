@@ -3,48 +3,56 @@
 
 USING_NS_HC;
 
-void Timer::start() {
-  this->started_ = true;
-  this->paused_ = false;
-  this->startTicks_ = SDL_GetTicks();
-  this->pausedTicks_ = 0;
+hcTimer::hcTimer() {
+  this->startTicks = 0;
+  this->pausedTicks = 0;
+
+  this->paused = false;
+  this->started = false;
 }
 
-void Timer::stop() {
-  this->started_ = false;
-  this->paused_ = false;
-  this->startTicks_ = 0;
-  this->pausedTicks_ = 0;
+void hcTimer::start() {
+  this->started = true;
+  this->paused = false;
+  this->startTicks = SDL_GetTicks();
+  this->pausedTicks = 0;
 }
 
-void Timer::pause() {
-  if (this->started_ && !this->paused_) {
-    this->paused_ = true;
+void hcTimer::stop() {
+  this->started = false;
+  this->paused = false;
+  this->startTicks = 0;
+  this->pausedTicks = 0;
+}
 
-    this->pausedTicks_ = SDL_GetTicks() - this->startTicks_;
-    this->startTicks_ = 0;
+void hcTimer::pause() {
+  if (this->started && !this->paused) {
+    this->paused = true;
+
+    this->pausedTicks = SDL_GetTicks() - this->startTicks;
+    this->startTicks = 0;
   }
 }
 
-void Timer::unpause() {
-  if (this->started_ && this->paused_) {
-    this->paused_ = false;
-    this->startTicks_ = SDL_GetTicks() - this->pausedTicks_;
-    this->pausedTicks_ = 0;
+void hcTimer::unpause() {
+  if (this->started && this->paused) {
+    this->paused = false;
+    this->startTicks = SDL_GetTicks() - this->pausedTicks;
+    this->pausedTicks = 0;
   }
 }
 
-bool Timer::isStarted() { return this->started_; }
+bool hcTimer::isStarted() { return this->started; }
 
-bool Timer::isPaused() { return this->paused_ && this->started_; }
+bool hcTimer::isPaused() { return this->paused && this->started; }
 
-uint32_t Timer::getTicks() {
+uint32_t hcTimer::getTicks() {
   uint32_t time = 0;
-  if (this->started_) {
-    if (this->paused_) {
-      time = this->pausedTicks_;
+  if (this->started) {
+    if (this->paused) {
+      time = this->pausedTicks;
     } else {
-      time = SDL_GetTicks() - startTicks_;
+      time = SDL_GetTicks() - startTicks;
     }
   }
   return time;

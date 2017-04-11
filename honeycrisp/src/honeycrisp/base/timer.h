@@ -4,9 +4,11 @@
 
 NS_HC_BEGIN
 
-class Timer {
+class hcTimer {
 public:
-  Timer() : startTicks_(0), pausedTicks_(0), paused_(false), started_(false){};
+  hcTimer();
+  hcTimer(uint32_t startTicks, uint32_t pausedTicks, bool paused, bool started) :
+    startTicks(startTicks), pausedTicks(pausedTicks), paused(paused), started(started) {}
 
   void start();
   void stop();
@@ -19,11 +21,11 @@ public:
   bool isPaused();
 
 private:
-  uint32_t startTicks_;
-  uint32_t pausedTicks_;
+  uint32_t startTicks;
+  uint32_t pausedTicks;
 
-  bool paused_;
-  bool started_;
+  bool paused;
+  bool started;
 };
 
 NS_HC_END

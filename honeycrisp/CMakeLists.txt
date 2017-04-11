@@ -21,7 +21,6 @@ ${PROJECT_SOURCE_DIR}/renderer/texturemanager.cpp
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
-find_package(SDL2_gfx REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++1y -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls -O1")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -v")

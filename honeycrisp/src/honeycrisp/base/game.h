@@ -7,10 +7,9 @@
 #include "../base/sdl.h"
 #include "../controllers/keyboard.h"
 #include "../utils/logging.h"
+#include "../base/timer.h"
 #include "game_context.h"
 #include <SDL2/SDL.h>
-#include <SDL2/SDL2_framerate.h>
-#include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <map>
@@ -41,15 +40,14 @@ public:
   void clean();
 
   void loadScene(SceneUPtr scene);
-  void runScene(SceneUPtr scene);
-
-  SDL_Renderer *getRenderer() { return &*this->gameContext.renderer; }
+  void run();
 
   bool running() { return this->running_; }
 
 private:
   hcGameConfig config_;
-  FPSmanager fpsManager_;
+  hcTimer fpsTimer;
+  hcTimer capTimer;
   SceneUPtr scene_;
   bool running_;
 
