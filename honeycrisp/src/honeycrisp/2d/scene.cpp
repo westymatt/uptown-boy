@@ -6,13 +6,13 @@ using std::for_each;
 USING_NS_HC;
 
 void Scene::addChild(Node *node) {
-  node->setRenderer(this->renderer);
+  node->setRenderer(this->gameContext->renderer);
   this->nodes_.push_back(node);
 }
 
 void Scene::execute() {}
 
-void Scene::setRenderer(RendererSPtr renderer) { this->renderer = renderer; }
+void Scene::attachGameContext(Base::hcGameContext *gameContext) { this->gameContext = gameContext; }
 
 void Scene::render() {
   for (Node *node : this->nodes_) {

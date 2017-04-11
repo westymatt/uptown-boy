@@ -18,28 +18,28 @@ public:
     // this->kenSheet->sprite->setScale(scale);
     this->kenSheet->sprite->setAnchorPoint(Point{0, 0});
     this->kenSheet->sprite->loadTexture("resources/example.png",
-                                        this->renderer);
+                                        this->gameContext->renderer);
     this->addChild(this->kenSheet->sprite.get());
     return true;
   }
 
   virtual void update() override {
-    // if (Keyboard::isPressed(SDL_SCANCODE_LEFT)) {
-    //   this->kenSheet->sprite->dstRect_.decX(1);
-    // }
-    // if (Keyboard::isPressed(SDL_SCANCODE_RIGHT)) {
-    //   this->kenSheet->sprite->dstRect_.incX(1);
-    //   this->kenSheet->sprite->setPosition(Point{100, 100});
-    // }
-    // if (Keyboard::isPressed(SDL_SCANCODE_UP)) {
-    //   this->kenSheet->sprite->dstRect_.decY(1);
-    // }
-    // if (Keyboard::isPressed(SDL_SCANCODE_DOWN)) {
-    //   this->kenSheet->sprite->dstRect_.incY(1);
-    // }
-    // if (Keyboard::isPressed((SDL_SCANCODE_SPACE))) {
-    //   auto moveby = new MoveBy(1);
-    // }
+    if (this->gameContext->keyboard->isPressed(SDL_SCANCODE_LEFT)) {
+      this->kenSheet->sprite->dstRect_.decX(1);
+    }
+    if (this->gameContext->keyboard->isPressed(SDL_SCANCODE_RIGHT)) {
+      this->kenSheet->sprite->dstRect_.incX(1);
+      this->kenSheet->sprite->setPosition(Point{100, 100});
+    }
+    if (this->gameContext->keyboard->isPressed(SDL_SCANCODE_UP)) {
+      this->kenSheet->sprite->dstRect_.decY(1);
+    }
+    if (this->gameContext->keyboard->isPressed(SDL_SCANCODE_DOWN)) {
+      this->kenSheet->sprite->dstRect_.incY(1);
+    }
+    if (this->gameContext->keyboard->isPressed((SDL_SCANCODE_SPACE))) {
+      auto moveby = new MoveBy(1);
+    }
   }
 
 private:

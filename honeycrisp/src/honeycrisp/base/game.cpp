@@ -87,7 +87,7 @@ void hcGame::runScene(SceneUPtr scene) {
 }
 
 void hcGame::executeScene() {
-  this->scene_->setRenderer(this->gameContext.renderer);
+  this->scene_->attachGameContext(&this->gameContext);
   this->scene_->init();
   this->loop();
 }

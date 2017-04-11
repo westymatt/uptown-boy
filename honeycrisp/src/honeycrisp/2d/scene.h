@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../base/sdl.h"
+#include "../base/game_context.h"
 #include "SDL2/SDL.h"
 #include "node.h"
 #include <vector>
@@ -18,12 +19,12 @@ public:
   virtual void execute();
   virtual void render();
   virtual void update()=0;
-  virtual void setRenderer(RendererSPtr renderer);
+  virtual void attachGameContext(Base::hcGameContext *gameContext);
   virtual ~Scene(){};
 
 protected:
+  Base::hcGameContext *gameContext;
   vector<Node *> nodes_;
-  RendererSPtr renderer;
 };
 
 using SceneUPtr = unique_ptr<Scene>;
