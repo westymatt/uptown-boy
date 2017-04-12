@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../utils/logging.h"
 #include "macros.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -69,6 +68,7 @@ using RendererSPtr = sdl_s_ptr<SDL_Renderer, sdl_deleter>;
 using TextureSPtr = sdl_s_ptr<SDL_Texture, sdl_deleter>;
 using SurfaceSPtr = sdl_s_ptr<SDL_Surface, sdl_deleter>;
 using JoystickSPtr = sdl_s_ptr<SDL_Joystick, sdl_deleter>;
+
 /*
  * Unique Ptr Factories
  */

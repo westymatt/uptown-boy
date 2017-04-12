@@ -1,6 +1,5 @@
 #include "game.h"
 #include "../controllers/keyboard.h"
-#include <assert.h>
 
 USING_NS_HC;
 
@@ -113,7 +112,5 @@ void hcGame::loop() {
 }
 
 void hcGame::clean() {
-  //SDL_DestroyWindow(&*this->gameContext.window);
-  //SDL_DestroyRenderer(&*this->gameContext.renderer);
   SDL_Quit();
 }
