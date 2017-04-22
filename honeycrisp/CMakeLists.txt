@@ -8,7 +8,6 @@ set(HONEYCRISP_SRCS
 ${PROJECT_SOURCE_DIR}/2d/geometry/rect.cpp
 ${PROJECT_SOURCE_DIR}/2d/scene.cpp
 ${PROJECT_SOURCE_DIR}/2d/sprite.cpp
-${PROJECT_SOURCE_DIR}/2d/spritesheet.cpp
 ${PROJECT_SOURCE_DIR}/2d/surface.cpp
 ${PROJECT_SOURCE_DIR}/base/game.cpp
 ${PROJECT_SOURCE_DIR}/base/gameobject.cpp

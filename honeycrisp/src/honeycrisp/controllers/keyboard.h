@@ -1,6 +1,5 @@
 #pragma once
 #include "../base/macros.h"
-#include "../base/singleton.h"
 #include "controller.h"
 #include <iostream>
 #include <map>

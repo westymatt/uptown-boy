@@ -7,7 +7,6 @@
 #include "base/gameobject.h"
 #include "base/macros.h"
 #include "base/sdl.h"
-#include "base/singleton.h"
 #include "base/thread.h"
 #include "base/timer.h"
 
@@ -30,7 +29,6 @@
 
 // Sprites
 #include "2d/sprite.h"
-#include "2d/spritesheet.h"
 
 // Utils
 #include "utils/logging.h"
@@ -40,6 +38,3 @@
 #include "controllers/controller.h"
 #include "controllers/gamepad.h"
 #include "controllers/keyboard.h"
-
-// Entity System
-#include "entities/entity.h"
