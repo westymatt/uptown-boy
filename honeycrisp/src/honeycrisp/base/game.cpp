@@ -16,6 +16,7 @@ bool hcGame::init() {
     LOG(SDL_GetError());
     return false;
   }
+
   this->gameContext.window = make_unique_window(this->config_.title, this->config_.xpos,
                                      this->config_.ypos, this->config_.width,
                                      this->config_.height, this->config_.flags);
@@ -57,7 +58,7 @@ void hcGame::update() { this->scene_->update(); }
 
 void hcGame::render() {
   SDL_RenderClear(&*this->gameContext.renderer);
-  this->processScene();
+  this->scene_->render();
   SDL_RenderPresent(&*this->gameContext.renderer);
 }
 
@@ -86,8 +87,6 @@ void hcGame::executeScene() {
   this->scene_->init();
   this->loop();
 }
-
-void hcGame::processScene() { this->scene_->render(); }
 
 void hcGame::loop() {
   uint32_t countedFrames = 0;

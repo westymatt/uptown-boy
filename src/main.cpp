@@ -12,30 +12,27 @@ USING_NS_HC;
 class ExampleScene1 : public Scene {
 public:
   virtual bool init() override {
-    auto sprite = make_unique<Sprite>(Rect{0, 0, 80, 80}, Rect{0, 0, 100, 100});
-    this->kenSheet = make_unique<Spritesheet>(move(sprite));
-    // Vector2f scale = Vector2f(2.0, 2.0);
-    // this->kenSheet->sprite->setScale(scale);
-    this->kenSheet->sprite->setAnchorPoint(Point{0, 0});
-    this->kenSheet->sprite->loadTexture("resources/example.png",
-                                        this->gc->renderer);
-    this->addChild(this->kenSheet->sprite.get());
+    this->ken = make_unique<Sprite>(Rect{0, 0, 80, 80}, Rect{0, 0, 100, 100});
+    this->ken->setAnchorPoint(Point{0, 0});
+    this->ken->loadTexture("resources/example.png", this->gc->renderer);
+    this->ken->setScale(2, 2);
+    this->addChild(this->ken.get());
     return true;
   }
 
   virtual void update() override {
     if (this->gc->keyboard->isPressed(SDL_SCANCODE_LEFT)) {
-      this->kenSheet->sprite->dstRect_.decX(1);
+      this->ken->dstRect.point.x -= 1;
     }
     if (this->gc->keyboard->isPressed(SDL_SCANCODE_RIGHT)) {
-      this->kenSheet->sprite->dstRect_.incX(1);
-      this->kenSheet->sprite->setPosition(Point{100, 100});
+      this->ken->dstRect.point.x += 1;
+      this->ken->setPosition(Point{100, 100});
     }
     if (this->gc->keyboard->isPressed(SDL_SCANCODE_UP)) {
-      this->kenSheet->sprite->dstRect_.decY(1);
+      this->ken->dstRect.point.y += 1;
     }
     if (this->gc->keyboard->isPressed(SDL_SCANCODE_DOWN)) {
-      this->kenSheet->sprite->dstRect_.incY(1);
+      this->ken->dstRect.point.y -= 1;
     }
     if (this->gc->keyboard->isPressed((SDL_SCANCODE_SPACE))) {
       auto moveby = new MoveBy(1);
@@ -43,7 +40,7 @@ public:
   }
 
 private:
-  SpritesheetUPtr kenSheet;
+  SpriteUPtr ken;
 };
 
 int main(int argc, char *args[]) {

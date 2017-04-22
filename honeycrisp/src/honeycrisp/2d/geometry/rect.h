@@ -20,7 +20,7 @@ public:
   int width;
   int height;
 
-  const SDL_Rect *getRect() {
+  SDL_Rect *getRect() {
     this->rect_.x = this->point.x;
     this->rect_.y = this->point.y;
     this->rect_.w = this->width;

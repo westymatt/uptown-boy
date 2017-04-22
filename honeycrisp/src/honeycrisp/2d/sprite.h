@@ -21,9 +21,9 @@ NS_HC_BEGIN
 class Sprite : public Node {
 public:
   std::unique_ptr<Texture> texture;
-  Rect srcRect_;
-  Rect dstRect_;
-  Sprite(Rect srcRect, Rect dstRect) : srcRect_(srcRect), dstRect_(dstRect){};
+  Rect srcRect;
+  Rect dstRect;
+  Sprite(Rect srcRect, Rect dstRect) : srcRect(srcRect), dstRect(dstRect){};
   ~Sprite();
   void loadTexture(std::string filepath, RendererSPtr renderer);
   void render();

@@ -39,7 +39,6 @@ private:
 
   void executeScene();
   void loop();
-  void processScene();
 };
 
 NS_HC_END

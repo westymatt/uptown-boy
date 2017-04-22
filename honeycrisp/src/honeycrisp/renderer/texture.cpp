@@ -15,9 +15,11 @@ void Texture::loadTexture() {
 
 void Texture::render() {
   const SDL_Rect *src = NULL;
-  const SDL_Rect *dst = NULL;
+  SDL_Rect *dst = NULL;
   src = this->srcRect_.getRect();
   dst = this->dstRect_.getRect();
+  dst->w *= this->scale_.x;
+  dst->h *= this->scale_.y;
   SDL_RenderCopy(&*this->renderer_, this->texture_, src, dst);
 }
 
