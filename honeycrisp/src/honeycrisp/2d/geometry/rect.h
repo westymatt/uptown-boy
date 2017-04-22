@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../base/macros.h"
-#include "../point.h"
+#include "point.h"
 #include <SDL2/SDL.h>
 #include <memory>
 #include <utility>
